@@ -1,0 +1,748 @@
+:root {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --accent-color: #00FFFF;
+    --secondary-color: #1e1e1e;
+    --font-main: 'Inter', sans-serif;
+    --font-code: 'Source Code Pro', monospace;
+    --spacing-unit: 1rem;
+    --container-width: 1200px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+/* Layout Utilities */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section {
+    padding: 5rem 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: var(--accent-color);
+    font-family: var(--font-code);
+}
+
+.accent {
+    color: var(--accent-color);
+}
+
+/* Hero Section */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    /* For absolute positioning of counters */
+}
+
+/* Wave Text Animation */
+.wave-text span {
+    display: inline-block;
+    animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Floating Counters */
+.floating-counter {
+    position: absolute;
+    top: 65%;
+    transform: translateY(-50%);
+    animation: float 6s ease-in-out infinite;
+}
+
+.left-counter {
+    left: 10%;
+}
+
+.right-counter {
+    right: 10%;
+    animation-delay: 3s;
+    /* Offset animation */
+}
+
+.center-counter {
+    position: absolute;
+    /* Initial position will be set by JS, or default to center */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 6s ease-in-out;
+    /* Match Posts/Awards speed */
+    z-index: 1;
+    /* Ensure it doesn't block text interaction if possible, or maybe it should? */
+}
+
+/* Specific style for the wandering Courses element */
+.center-counter .counter-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    /* Rounded square */
+    background: rgba(0, 255, 255, 0.05);
+    /* Slight tint difference? */
+}
+
+.counter-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--accent-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.counter-circle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+}
+
+.count {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    font-family: var(--font-code);
+}
+
+.label {
+    font-size: 0.9rem;
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(-50%) translateY(0);
+    }
+
+    50% {
+        transform: translateY(-50%) translateY(-20px);
+    }
+}
+
+/* Responsive adjustments for counters */
+@media (max-width: 1024px) {
+    .floating-counter {
+        display: none;
+        /* Hide on smaller screens to avoid clutter */
+    }
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    letter-spacing: -0.05em;
+    min-height: 4rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: #888;
+    margin-bottom: 2rem;
+    font-family: var(--font-code);
+}
+
+/* Dynamic Subtitle */
+.dynamic-subtitle-container {
+    font-size: 1.5rem;
+    color: #888;
+    margin-bottom: 2rem;
+    font-family: var(--font-code);
+    min-height: 3rem;
+    /* Prevent layout shift */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.subtitle-icon {
+    color: var(--accent-color);
+    font-size: 1.8rem;
+    transition: opacity 0.3s ease;
+}
+
+.subtitle-text {
+    display: inline-block;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    margin: 0 0.5rem;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.btn-secondary {
+    border-color: #333;
+    color: var(--text-color);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent-color);
+}
+
+/* Skills Grid (3x3) */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.skill-card {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    font-family: var(--font-code);
+    border: 1px solid #333;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+/* Projects Section */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-color);
+}
+
+.project-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+/* Social Icons */
+.social-icons {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.social-icon {
+    font-size: 1.5rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.social-icon:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color);
+    transform: translateY(-3px);
+}
+
+/* Sequential Neon Animation */
+.social-icon {
+    animation: neon-pulse 3s infinite;
+}
+
+.social-icon:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.social-icon:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.social-icon:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.social-icon:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+.social-icon:nth-child(5) {
+    animation-delay: 0.8s;
+}
+
+@keyframes neon-pulse {
+
+    0%,
+    100% {
+        border-color: #333;
+        box-shadow: none;
+        color: var(--text-color);
+    }
+
+    10%,
+    30% {
+        border-color: var(--accent-color);
+        box-shadow: 0 0 15px var(--accent-color);
+        color: var(--accent-color);
+    }
+}
+
+/* Award Cards specific styles */
+.award-card {
+    border-left-color: #ff00ff;
+    /* Different accent for awards? Or keep same? Let's keep consistent but maybe add a glow */
+    border-left: 3px solid var(--accent-color);
+    overflow: hidden;
+    /* Ensure content stays within rounded corners */
+}
+
+.award-img-container {
+    width: 100%;
+    height: 200px;
+    /* Fixed height for consistency */
+    overflow: hidden;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.award-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.award-img-container:hover .award-image {
+    transform: scale(1.1);
+}
+
+.btn-link {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+/* Typing Effect Cursor */
+.typing-cursor::after {
+    content: '|';
+    animation: blink 1s step-end infinite;
+    color: var(--accent-color);
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Contact Section */
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.hire-cta {
+    text-align: center;
+}
+
+.hire-cta p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #888;
+}
+
+.btn-large {
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+}
+
+/* Section Header & Back to Top */
+.section-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.section-header .section-title {
+    margin-bottom: 0;
+}
+
+.back-to-top {
+    position: absolute;
+    right: 0;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+    border: 1px solid #333;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top:hover {
+    opacity: 1;
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+/* New Contact Layout */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: stretch;
+}
+
+.contact-info-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.2rem;
+    font-family: var(--font-code);
+}
+
+.contact-item .icon {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    width: 30px;
+    text-align: center;
+}
+
+.map-panel {
+    height: 100%;
+    min-height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.hire-cta-compact {
+    margin-top: 1rem;
+    padding-top: 2rem;
+    border-top: 1px solid #333;
+}
+
+.hire-cta-compact p {
+    margin-bottom: 1rem;
+    color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    /* Hero Section */
+    .hero-section {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        padding-top: 6rem;
+        height: auto;
+        min-height: 100vh;
+        padding-bottom: 3rem;
+    }
+
+    .hero-content {
+        order: 1;
+        width: 100%;
+        padding: 0 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+        min-height: auto;
+        margin-bottom: 1rem;
+    }
+
+    .dynamic-subtitle-container {
+        font-size: 0.9rem;
+        flex-direction: column;
+        gap: 0.5rem;
+        height: auto;
+        min-height: 80px;
+        margin-bottom: 2rem;
+    }
+
+    .subtitle-icon {
+        font-size: 1.2rem;
+    }
+
+    /* Floating Counters - Stack below content on mobile */
+    .floating-counter,
+    .floating-circle {
+        position: static;
+        transform: none !important;
+        /* Disable animations */
+        animation: none !important;
+        display: inline-flex;
+        margin: 0.5rem;
+        order: 2;
+    }
+
+    /* Center the counters */
+    .hero-section::after {
+        content: "";
+        display: block;
+        width: 100%;
+        order: 2;
+    }
+
+    /* Awards Section */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .award-img-container {
+        height: 180px;
+    }
+
+    /* Testimonials Section */
+    .testimonials-container {
+        padding: 0 1rem;
+    }
+
+    .testimonial-card-static {
+        padding: 1.5rem;
+    }
+
+    .testimonial-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+
+    .testimonial-info h4 {
+        font-size: 1.2rem;
+    }
+
+    .testimonial-body p {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    /* Contact Section */
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .map-panel {
+        min-height: 250px;
+    }
+
+    .contact-info-panel {
+        gap: 1.5rem;
+    }
+
+    .hire-cta-compact {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        width: 100%;
+        display: block;
+        margin-bottom: 0.5rem;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+/* Testimonials Section */
+.testimonials-container {
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.testimonial-card-static {
+    background: var(--secondary-color);
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.testimonial-card-static:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-color);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #333;
+    padding-bottom: 1.5rem;
+}
+
+.testimonial-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--accent-color);
+}
+
+.testimonial-info h4 {
+    color: #fff;
+    margin-bottom: 0.3rem;
+    font-size: 1.3rem;
+}
+
+.testimonial-info span {
+    color: var(--accent-color);
+    font-size: 1rem;
+    font-family: var(--font-code);
+}
+
+.testimonial-body p {
+    font-size: 1.1rem;
+    color: #ccc;
+    line-height: 1.8;
+    font-style: italic;
+    position: relative;
+}
+
+.quote-icon {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+    opacity: 0.8;
+}
+
+.testimonial-body a {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
