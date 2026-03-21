@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Wave Animation for Title ---
     const titleElement = document.getElementById('wave-title');
-    const text = "Senior Data Engineer";
+    const text = "AI & Data Engineer";
 
     // Split text into spans for wave effect
     titleElement.innerHTML = text.split('').map((char, index) => {
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Colorize "Data Engineer"
     const spans = titleElement.querySelectorAll('span');
     spans.forEach((span, index) => {
-        if (index >= 7) { // "Senior " is 7 chars
+        if (index >= 5) { // "AI & " is 5 chars
             span.classList.add('accent');
         }
     });
@@ -85,8 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Move every 6 seconds (matches CSS transition time)
         setInterval(moveCircle, 6000);
-        // Move every 6 seconds (matches CSS transition time)
-        setInterval(moveCircle, 6000);
     }
 
     // --- Dynamic Subtitle Typing Effect ---
@@ -95,6 +93,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (subtitleElement && subtitleIcon) {
         const phrases = [
+            { text: "Senior Data Engineer | 6+ Years | AI-First Mindset", icon: "fas fa-brain" },
+            { text: "AI Engineer in progress — building with Amazon Bedrock & MCP.", icon: "fas fa-robot" },
             { text: "Udemy instructor with 2 data courses and over 1,900 students.", icon: "fas fa-chalkboard-teacher" },
             { text: "AWS Community Builder in Data for 4+ years.", icon: "fab fa-aws" },
             { text: "Technical writer with 18+ published posts and over 40K views.", icon: "fas fa-pen-fancy" }
