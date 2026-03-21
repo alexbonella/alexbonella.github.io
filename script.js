@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- Wave Animation for Title ---
     const titleElement = document.getElementById('wave-title');
-    const text = "AI & Data Engineer";
+    const text = "Senior Data Engineer";
 
     // Split text into spans for wave effect
     titleElement.innerHTML = text.split('').map((char, index) => {
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Colorize "Data Engineer"
     const spans = titleElement.querySelectorAll('span');
     spans.forEach((span, index) => {
-        if (index >= 5) { // "AI & " is 5 chars
+        if (index >= 7) { // "Senior " is 7 chars
             span.classList.add('accent');
         }
     });
