@@ -7,6 +7,23 @@
     <title>Datexland - Data Engineering & AI Solutions, Freelance Services</title>
     <meta name="description"
         content="Elevate your business with freelance data engineering and AI solutions at Datexland. Driven by curiosity for new projects, I share technical insights and apply AI agents to optimize daily processes and drive success.">
+    <link rel="canonical" href="https://datexland.com/">
+    <meta name="author" content="Alexander Bolaño">
+    <meta name="robots" content="index, follow">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://datexland.com/">
+    <meta property="og:title" content="Datexland - Data Engineering & AI Solutions">
+    <meta property="og:description" content="Freelance data engineering and AI solutions. Senior Data Engineer with 6+ years, AI-first mindset, hackathon winner, and AWS Community Builder.">
+    <meta property="og:image" content="https://datexland.com/media/logo_color.jpeg">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Datexland">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@datexland">
+    <meta name="twitter:title" content="Datexland - Data Engineering & AI Solutions">
+    <meta name="twitter:description" content="Freelance data engineering and AI solutions. Hackathon winner, AWS Community Builder, Udemy instructor.">
+    <meta name="twitter:image" content="https://datexland.com/media/logo_color.jpeg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -48,9 +65,15 @@
 </head>
 
 <body>
+    <!-- Sound Toggle -->
+    <button id="sound-toggle" class="sound-toggle" aria-label="Toggle keyboard sound" title="Toggle keyboard sound">
+        <i class="fas fa-keyboard" id="sound-icon"></i>
+    </button>
+
     <main class="container">
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
+            <canvas id="matrix-canvas" aria-hidden="true"></canvas>
             <!-- Floating Counters -->
             <a href="#awards" class="floating-counter left-counter">
                 <div class="counter-circle">
@@ -233,6 +256,10 @@
             </div>
         </section>
     </main>
+
+    <footer>
+        <p>&copy; 2026 Datexland. All rights reserved.</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>

@@ -9,6 +9,10 @@
     --container-width: 1200px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -70,6 +74,22 @@ a {
     /* For absolute positioning of counters */
 }
 
+/* Matrix Rain Canvas */
+#matrix-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    opacity: 0.35;
+    pointer-events: none;
+    /* width/height set by JS to match devicePixelRatio */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
 /* Wave Text Animation */
 .wave-text span {
     display: inline-block;
@@ -94,6 +114,7 @@ a {
     top: 65%;
     transform: translateY(-50%);
     animation: float 6s ease-in-out infinite;
+    z-index: 2;
 }
 
 .left-counter {
@@ -232,6 +253,16 @@ a {
 .btn-primary {
     background-color: var(--accent-color);
     color: var(--bg-color);
+    animation: cta-glow 3s ease-in-out infinite;
+}
+
+@keyframes cta-glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(0, 255, 255, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+    }
 }
 
 .btn-primary:hover {
@@ -239,6 +270,7 @@ a {
     border-color: var(--accent-color);
     color: var(--accent-color);
     box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+    animation: none;
 }
 
 .btn-secondary {
@@ -637,6 +669,11 @@ a {
         font-size: 1.2rem;
     }
 
+    /* Network graph — slightly reduced on mobile */
+    #matrix-canvas {
+        opacity: 0.2;
+    }
+
     /* Floating Counters - Stack below content on mobile */
     .floating-counter,
     .floating-circle {
@@ -689,6 +726,15 @@ a {
     .testimonial-body p {
         font-size: 1rem;
         text-align: center;
+    }
+
+    /* Sound Toggle */
+    .sound-toggle {
+        bottom: 1rem;
+        right: 1rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
     }
 
     /* Contact Section */
@@ -797,4 +843,58 @@ a {
 .testimonial-body a {
     color: var(--accent-color);
     text-decoration: underline;
+}
+
+/* Scroll Reveal Animations */
+.section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.revealed,
+.hero-section {
+    opacity: 1;
+    transform: none;
+}
+
+/* Sound Toggle */
+.sound-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(30, 30, 30, 0.9);
+    border: 1px solid #333;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.sound-toggle:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+}
+
+.sound-toggle.active {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    color: #555;
+    font-size: 0.85rem;
+    border-top: 1px solid #222;
 }
